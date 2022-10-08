@@ -24,7 +24,6 @@ public class Announcement {
     @Column(name = "ANNOUNCEMENT_TYPE")
     private AnnouncementType announcementType;
 
-    @ManyToMany
-    @JoinTable(name = "BULLETIN_ELEMENT_ANNOUNCEMENT")
-    private List<BulletinElement> bulletinElements;
+    @OneToMany(mappedBy = "announcement",fetch = FetchType.LAZY)
+    private List<WorshipAnnouncement> worshipAnnouncements;
 }

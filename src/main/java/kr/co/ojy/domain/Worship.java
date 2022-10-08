@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -17,6 +19,13 @@ public class Worship {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CHURCH_ID")
     private Church church;
+
+    @OneToMany(mappedBy = "worship", fetch = FetchType.LAZY)
+    private List<WorshipAnnouncement> worshipAnnouncements = new ArrayList<>();
+
+    @OneToMany(mappedBy = "worship", fetch = FetchType.LAZY)
+    private List<Bulletin> bulletin = new ArrayList<>();
+
 }
 
 
