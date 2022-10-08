@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @NoArgsConstructor
-public class WorshipAnnouncement {
+public class WorshipAnnouncement extends BaseEntity{
     @Id
     @GeneratedValue
     @Column(name = "WORSHIP_ANNOUNCEMENT_ID")

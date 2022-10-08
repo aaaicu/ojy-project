@@ -10,7 +10,7 @@ import java.util.List;
 @Entity
 @Getter
 @NoArgsConstructor
-public class Church {
+public class Church extends BaseEntity{
     @Id
     @Column(name = "CHURCH_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
