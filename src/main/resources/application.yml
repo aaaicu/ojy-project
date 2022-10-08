@@ -6,18 +6,18 @@ spring:
     name: ojy-bulletin-service
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
+    url: jdbc:postgresql://localhost:5432/ohjooyeo
     driver-class-name: org.postgresql.Driver
     username: postgres
     password:
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
     properties:
       hibernate:
         format_sql: true
         show-sql: true
-        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        dialect: org.hibernate.dialect.PostgreSQLDialect
 
 logging:
   level:
