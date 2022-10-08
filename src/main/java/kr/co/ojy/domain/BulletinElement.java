@@ -33,8 +33,8 @@ public class BulletinElement {
     @Column(name = "BULLETIN_ELEMENT_TYPE")
     private BulletinElementType bulletinElementType;
 
-    @ManyToMany
-    @JoinTable(name = "BULLETIN_ELEMENT_ANNOUNCEMENT")
-    private List<Announcement> announcements;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "BULLETIN_ID")
+    private Bulletin bulletin;
 
 }
