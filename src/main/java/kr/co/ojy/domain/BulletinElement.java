@@ -9,7 +9,7 @@ import java.util.List;
 @Entity
 @Getter
 @NoArgsConstructor
-public class BulletinElement {
+public class BulletinElement extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "BULLETIN_ELEMENT_ID")
@@ -31,6 +31,7 @@ public class BulletinElement {
     private String urlKey;
 
     @Column(name = "BULLETIN_ELEMENT_TYPE")
+    @Enumerated(value = EnumType.STRING)
     private BulletinElementType bulletinElementType;
 
     @ManyToOne(fetch = FetchType.LAZY)

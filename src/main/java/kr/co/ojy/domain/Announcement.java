@@ -9,7 +9,7 @@ import java.util.List;
 @Entity
 @Getter
 @NoArgsConstructor
-public class Announcement {
+public class Announcement extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ANNOUNCEMENT_ID")
@@ -22,6 +22,7 @@ public class Announcement {
     private String content;
 
     @Column(name = "ANNOUNCEMENT_TYPE")
+    @Enumerated(value = EnumType.STRING)
     private AnnouncementType announcementType;
 
     @OneToMany(mappedBy = "announcement",fetch = FetchType.LAZY)
