@@ -11,7 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 public class ChurchFacade {
 
     public ChurchTitleResponse getBullentinTitle(String churchId) {
-
-        return ChurchTitleResponse.builder().build();
+        return ChurchTitleResponse.builder()
+                .churchTitle("test")
+                .motto("testMotto")
+                .build();
     }
 }
