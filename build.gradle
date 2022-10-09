@@ -1,6 +1,19 @@
+import org.hidetake.gradle.swagger.generator.GenerateSwaggerUI
+import org.springframework.boot.gradle.tasks.bundling.BootJar
+
 buildscript {
     ext {
         queryDslVersion = "5.0.0"
+        restdocsApiSpecVersion = '0.16.2'
+    }
+
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "com.epages:restdocs-api-spec-gradle-plugin:${restdocsApiSpecVersion}"
     }
 }
 
@@ -8,8 +21,12 @@ plugins {
     id 'org.springframework.boot' version '2.7.4'
     id 'io.spring.dependency-management' version '1.0.14.RELEASE'
     id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
+    id 'com.epages.restdocs-api-spec' version "${restdocsApiSpecVersion}"
+    id 'org.hidetake.swagger.generator' version '2.18.2'
     id 'java'
 }
+
+apply plugin: 'com.epages.restdocs-api-spec'
 
 group = 'kr.co'
 version = '0.0.1-SNAPSHOT'
@@ -25,8 +42,22 @@ repositories {
     mavenCentral()
 }
 
+swaggerSources {
+    sample {
+        setInputFile(file("${project.buildDir}/api-spec/openapi3.yaml"))
+    }
+}
+
 ext {
     set('springCloudVersion', "2021.0.4")
+}
+
+openapi3 {
+    setServer("https://church.yummy-things.xyz")
+    title = "오주여 restdocs-swagger API Documentation"
+    description = "오주여 Spring REST Docs with SwaggerUI."
+    version = "0.0.1"
+    format = "yaml"
 }
 
 dependencies {
@@ -46,6 +77,9 @@ dependencies {
     runtimeOnly 'org.postgresql:postgresql'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
+    testImplementation "com.epages:restdocs-api-spec-mockmvc:${restdocsApiSpecVersion}"
+    swaggerUI 'org.webjars:swagger-ui:4.14.2'
 }
 
 dependencyManagement {
@@ -56,6 +90,27 @@ dependencyManagement {
 
 test{
     useJUnitPlatform()
+}
+// RestDocs - Swagger 연결 출처 : https://jwkim96.tistory.com/274
+
+// GenerateSwaggerUI 태스크가, openapi3 task 를 의존하도록 설정
+tasks.withType(GenerateSwaggerUI) {
+    dependsOn 'openapi3'
+}
+
+// 생성된 SwaggerUI 를 jar 에 포함시키기 위해 build/resources 경로로 로 복사
+tasks.register('copySwaggerUI', Copy) {
+    dependsOn 'generateSwaggerUISample'
+
+    def generateSwaggerUISampleTask = tasks.named('generateSwaggerUISample', GenerateSwaggerUI).get()
+
+    from("${generateSwaggerUISampleTask.outputDir}")
+    into("${project.buildDir}/resources/main/static/docs")
+}
+
+// bootJar 실행 전, copySwaggerUI 를 실행하도록 설정
+tasks.withType(BootJar) {
+    dependsOn 'copySwaggerUI'
 }
 
 def querydslDir = "$buildDir/generated/querydsl"
@@ -76,3 +131,4 @@ configurations {
     }
     querydsl.extendsFrom compileClasspath
 }
+
