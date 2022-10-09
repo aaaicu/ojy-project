@@ -21,9 +21,6 @@ public class Worship extends BaseEntity{
     private Church church;
 
     @OneToMany(mappedBy = "worship", fetch = FetchType.LAZY)
-    private List<WorshipAnnouncement> worshipAnnouncements = new ArrayList<>();
-
-    @OneToMany(mappedBy = "worship", fetch = FetchType.LAZY)
     private List<Bulletin> bulletin = new ArrayList<>();
 
 }

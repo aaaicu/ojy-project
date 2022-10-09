@@ -34,4 +34,8 @@ public class Bulletin extends BaseEntity {
 
     @OneToMany(mappedBy = "bulletin", fetch = FetchType.LAZY)
     private List<BulletinElement> bulletinElements = new ArrayList<>();
+
+    @OneToMany(mappedBy = "bulletin", fetch = FetchType.LAZY)
+    private List<BulletinAnnouncement> bulletinAnnouncements = new ArrayList<>();
+
 }

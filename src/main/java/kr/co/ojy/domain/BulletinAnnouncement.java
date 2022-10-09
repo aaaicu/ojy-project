@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @NoArgsConstructor
-public class WorshipAnnouncement extends BaseEntity{
+public class BulletinAnnouncement extends BaseEntity{
     @Id
     @GeneratedValue
     @Column(name = "WORSHIP_ANNOUNCEMENT_ID")
@@ -16,7 +16,7 @@ public class WorshipAnnouncement extends BaseEntity{
 
     @JoinColumn
     @ManyToOne(fetch = FetchType.LAZY)
-    private Worship worship;
+    private Bulletin bulletin;
 
     @JoinColumn
     @ManyToOne(fetch = FetchType.LAZY)

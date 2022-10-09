@@ -26,5 +26,5 @@ public class Announcement extends BaseEntity{
     private AnnouncementType announcementType;
 
     @OneToMany(mappedBy = "announcement",fetch = FetchType.LAZY)
-    private List<WorshipAnnouncement> worshipAnnouncements;
+    private List<BulletinAnnouncement> bulletinAnnouncements;
 }
