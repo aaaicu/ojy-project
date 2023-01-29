@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +19,9 @@ public class Bulletin extends BaseEntity {
 
     @Column(name = "EMCEE")
     private String emcee;          // 사회자
+
+    @Column(name = "WORSHIP_DATETIME")
+    private LocalDateTime worshipDateTime;
 
     @Column(name = "NEXT_EMCEE")
     private String nextEmcee;
