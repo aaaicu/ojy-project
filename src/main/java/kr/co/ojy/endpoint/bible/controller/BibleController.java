@@ -9,4 +9,5 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RequestMapping(Endpoint.BIBLE)
 public class BibleController {
+
 }

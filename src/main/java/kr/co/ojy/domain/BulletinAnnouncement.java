@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -17,6 +18,12 @@ public class BulletinAnnouncement extends BaseEntity{
     @JoinColumn
     @ManyToOne(fetch = FetchType.LAZY)
     private Bulletin bulletin;
+
+    @Column(name = "START_DATETIME")
+    private LocalDateTime startDateTime;
+
+    @Column(name = "END_DATETIME")
+    private LocalDateTime endDateTime;
 
     @JoinColumn
     @ManyToOne(fetch = FetchType.LAZY)
