@@ -17,4 +17,4 @@ COPY --from=builder build/libs/*.jar /ojy.jar
 EXPOSE 9099
 
 #ENTRYPOINT ["nohup","java", "-Djasypt.encryptor.password=${KEY}", "-jar", "/getto.jar", ">", "out.log", "2>&1","&"]
-ENTRYPOINT exec java -jar -Dspring.profiles.active=dev /getto.jar
+ENTRYPOINT exec java -jar -Dspring.profiles.active=dev -Dspring.datasource.password=${DB_PASSWORD}  /getto.jar
