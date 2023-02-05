@@ -8,8 +8,8 @@ COPY settings.gradle .
 COPY src src
 
 # Spring Boot 프로젝트 내의 gradle 설정 파일과 소스코드를 이미지로 가져옵니다.
-RUN chmod +x ./gradlew
-RUN ./gradlew bootjar
+RUN chmod +x gradlew
+RUN ./gradlew -x bootjar
 
 FROM openjdk:17
 COPY --from=builder build/libs/*.jar /ojy.jar
