@@ -1,6 +1,6 @@
 package kr.co.ojy.bulletin.service.domain;
 
-import kr.co.ojy.domain.BulletinElement;
+import kr.co.ojy.common.entity.BulletinElement;
 
 public class BulletinElementFactory {
     public static BulletinOrder createBulletinOrder(BulletinElement bulletinElement) {

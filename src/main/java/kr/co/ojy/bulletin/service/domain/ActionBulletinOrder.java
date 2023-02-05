@@ -1,8 +1,8 @@
 package kr.co.ojy.bulletin.service.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import kr.co.ojy.domain.BulletinElement;
-import kr.co.ojy.domain.BulletinElementType;
+import kr.co.ojy.common.entity.BulletinElement;
+import kr.co.ojy.common.entity.BulletinElementType;
 import lombok.Getter;
 
 import java.util.List;

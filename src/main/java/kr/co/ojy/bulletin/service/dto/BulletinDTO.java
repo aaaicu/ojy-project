@@ -2,8 +2,8 @@ package kr.co.ojy.bulletin.service.dto;
 
 import kr.co.ojy.bulletin.service.domain.BulletinElementFactory;
 import kr.co.ojy.bulletin.service.domain.BulletinOrder;
-import kr.co.ojy.domain.Bulletin;
-import kr.co.ojy.domain.BulletinElement;
+import kr.co.ojy.common.entity.Bulletin;
+import kr.co.ojy.common.entity.BulletinElement;
 import lombok.Builder;
 import lombok.Getter;
 

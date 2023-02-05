@@ -1,8 +1,8 @@
 package kr.co.ojy.endpoint.church.controller;
 
 import com.epages.restdocs.apispec.ResourceSnippetParameters;
-import kr.co.ojy.constant.Endpoint;
-import kr.co.ojy.constant.path.Church;
+import kr.co.ojy.common.constant.Endpoint;
+import kr.co.ojy.common.constant.path.Church;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

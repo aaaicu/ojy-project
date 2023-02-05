@@ -1,11 +1,11 @@
 package kr.co.ojy.bulletin.repository;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import kr.co.ojy.domain.Bulletin;
+import kr.co.ojy.common.entity.Bulletin;
 import lombok.RequiredArgsConstructor;
 
-import static kr.co.ojy.domain.QBulletin.bulletin;
-import static kr.co.ojy.domain.QBulletinElement.bulletinElement;
+import static kr.co.ojy.entity.QBulletin.bulletin;
+import static kr.co.ojy.entity.QBulletinElement.bulletinElement;
 
 @RequiredArgsConstructor
 public class BulletinRepositoryCustomImpl implements BulletinRepositoryCustom {
