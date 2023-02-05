@@ -10,6 +10,7 @@ COPY src src
 RUN microdnf install findutils
 # Spring Boot 프로젝트 내의 gradle 설정 파일과 소스코드를 이미지로 가져옵니다.
 RUN chmod +x ./gradlew
+RUN ./gradlew -x test compileQuerydsl
 RUN ./gradlew -x test bootJar
 #
 FROM openjdk:17
