@@ -9,7 +9,7 @@ spring:
     url: jdbc:postgresql://aaaicu.iptime.org:49156/ohjooyeo
     driver-class-name: org.postgresql.Driver
     username: postgres
-    password: qkrwogus1!
+    password:
   jpa:
     hibernate:
       ddl-auto: none
