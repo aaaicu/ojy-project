@@ -8,7 +8,7 @@ import java.util.List;
 
 @Getter
 public class PlainBulletinOrder implements BulletinOrder {
-
+    private final Long id;
     private final String title;
     private final String roleOwner;
     private final String content;
@@ -18,6 +18,7 @@ public class PlainBulletinOrder implements BulletinOrder {
 
 
     public PlainBulletinOrder(BulletinElement bulletinElement) {
+        this.id = bulletinElement.getId();
         this.title = bulletinElement.getTitle();
         this.roleOwner = bulletinElement.getRoleOwner();
         this.content = bulletinElement.getContent();

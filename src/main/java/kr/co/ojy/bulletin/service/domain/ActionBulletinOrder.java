@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 public class ActionBulletinOrder implements BulletinOrder {
     @JsonIgnore
     private final List<String> relatedUrlKeys;
+    private final Long id;
     private final String title;
     private final String roleOwner;
     private final String content;
@@ -20,6 +21,7 @@ public class ActionBulletinOrder implements BulletinOrder {
     private final BulletinElementType type;
 
     public ActionBulletinOrder(BulletinElement bulletinElement) {
+        this.id = bulletinElement.getId();
         this.title = bulletinElement.getTitle();
         this.roleOwner = bulletinElement.getRoleOwner();
         this.content = bulletinElement.getContent();
