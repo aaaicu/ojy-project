@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import kr.co.ojy.bulletin.service.domain.ActionBulletinOrder;
 import kr.co.ojy.bulletin.service.dto.BulletinDTO;
 import kr.co.ojy.common.constant.Endpoint;
 import kr.co.ojy.common.constant.path.Bulletin;
@@ -30,13 +31,10 @@ public class BulletinController {
 
     @Operation(summary = "주보 데이터 요청", description = "예배 ID를 받아서 주보 데이터 반환")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "OK", content = @Content(schema = @Schema(implementation = BulletinDTO.class))),
-            @ApiResponse(responseCode = "400", description = "BAD REQUEST"),
-            @ApiResponse(responseCode = "404", description = "NOT FOUND"),
-            @ApiResponse(responseCode = "500", description = "INTERNAL SERVER ERROR")
+            @ApiResponse(responseCode = "200", description = "OK", content = @Content(schema = @Schema(implementation = ActionBulletinOrder.class)))
     })
     @Parameters({
-            @Parameter(name = "worshipId", description = "예배 식별 Id", example = "1234")
+            @Parameter(name = "worshipId", description = "예배 식별 Id", example = "1")
     })
     @GetMapping(Bulletin.WORSHIP_BULLETIN)
     public ResponseEntity<BulletinDTO> findBulletin(@PathVariable Long worshipId) {
