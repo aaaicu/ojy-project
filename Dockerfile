@@ -16,8 +16,14 @@ RUN ./gradlew -x test bootJar
 FROM openjdk:17
 COPY --from=builder build/libs/*.jar /ojy.jar
 
-EXPOSE 9099
-ENV PW=qkrwogus1!
+ARG SPRING_PROFILES_ACTIVE
 
+RUN echo $SPRING_PROFILES_ACTIVE
+ENV SPRING_PROFILES_ACTIVE=$SPRING_PROFILES_ACTIVE
+
+ARG DB_PASSWORD
+
+EXPOSE 9099
+ENV PW=$DB_PASSWORD
 #ENTRYPOINT ["nohup","java", "-Djasypt.encryptor.password=${KEY}", "-jar", "/getto.jar", ">", "out.log", "2>&1","&"]
-ENTRYPOINT exec java -jar -Dspring.profiles.active=dev -Dspring.datasource.password=${PW} /ojy.jar
+ENTRYPOINT exec java -jar -Dspring.profiles.active=${SPRING_PROFILES_ACTIVE} -Dspring.datasource.password=${PW} /ojy.jar

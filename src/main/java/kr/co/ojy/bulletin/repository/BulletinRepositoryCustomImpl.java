@@ -4,8 +4,8 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import kr.co.ojy.common.entity.Bulletin;
 import lombok.RequiredArgsConstructor;
 
-import static kr.co.ojy.entity.QBulletin.bulletin;
-import static kr.co.ojy.entity.QBulletinElement.bulletinElement;
+import static kr.co.ojy.common.entity.QBulletin.bulletin;
+import static kr.co.ojy.common.entity.QBulletinElement.bulletinElement;
 
 @RequiredArgsConstructor
 public class BulletinRepositoryCustomImpl implements BulletinRepositoryCustom {
